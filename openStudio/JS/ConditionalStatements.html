@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+
+    </title>
+  </head>
+<body>
+ <h1>Conditional statements</h1>
+ <h2>Program</h2>
+  <script>
+    document.write("1<br>");
+    document.write("2<br>");
+    document.write("3<br>");
+    document.write("4<br>");
+  </script>
+  <h2>IF-true</h2>
+  <script>
+    document.write("1<br>");
+    if(true){
+      document.write("2<br>");
+    } else {
+      document.write("3<br>");
+    } 
+    document.write("4<br>");
+
+   </script>
+
+ <h1>아래로 갈수록 코드 단순화</h1>
+
+ <h3>-ID-</h3>
+ <input id="night_day" type="button" value="night" onclick="
+ if(document.querySelector('#night_day').value==='night'){
+ document.querySelector('body').style.backgroundColor = 'black';
+ document.querySelector('body').style.color='white';
+ document.querySelector('#night_day').value = 'day';
+  } else {
+  document.querySelector('body').style.backgroundColor = 'white';
+  document.querySelector('body').style.color='black';
+  document.querySelector('#night_day').value = 'night';
+  }
+  ">
+
+<h3>-var-</h3>
+<input id="night_day2" type="button" value="night" onclick="
+var target = document.querySelector('body');
+if(document.querySelector('#night_day2').value==='night'){
+target.style.backgroundColor = 'black';
+target.style.color='white';
+document.querySelector('#night_day2').value = 'day';
+ } else {
+ target.style.backgroundColor = 'white';
+ target.style.color='black';
+ document.querySelector('#night_day2').value = 'night';
+ }
+ ">
+
+<h3>-if(this)-</h3>
+ <input  type="button" value="night" onclick="
+ var target2 = document.querySelector('body');
+ if(this.value==='night'){
+ target2.style.backgroundColor = 'black';
+ target2.style.color='white';
+ this.value = 'day';
+  } else {
+  target2.style.backgroundColor = 'white';
+  target2.style.color='black';
+ this.value = 'night';
+  }
+  ">
+
+  
+
+</body>
+
+</html>
