@@ -9,11 +9,20 @@
     <h1>사용자가 입력한 숫자가 소수인지 아닌지 알려주는 프로그램을 작성해봅시다. </h1>
     
     <script>
-      let i = Number[prompt()];
-      let i2 = i/i;
-      while(i2=1||i/1=i){
-
+      let n = Number(prompt("2이상의 정수를 입력하시오."));
+      let isPrime = true;
+      for( let i = 2; i < n; i++){
+        if (n % i === 0) {
+         isPrime = false;
+         break;
+        } 
       }
+      if(isPrime){
+        document.write("입력한 숫자 " + n + "은 소수 입니다.");
+      } else {
+        document.write("입력한 숫자 " + n + "은 소수가 아닙니다.");
+      }
+      
     </script>
 </body>
 </html>
