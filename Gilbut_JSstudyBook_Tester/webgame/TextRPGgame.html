@@ -5,12 +5,12 @@
     <title>텍스트 RPG</title>
   </head>
   <body>
-    <form id="start=screen">
+    <form id="start-screen">
       <input id="name-input" placeholder="주인공 이름을 입력하세요!" />
       <button id="start">시작</button>
     </form>
     <div id="screen">
-      <div id="hero-stat">
+      <div id="hero-start">
         <span id="hero-name"></span>
         <span id="hero-level"></span>
         <span id="hero-hp"></span>
@@ -24,7 +24,7 @@
         <input id="menu-input" />
         <button id="menu-button">입력</button>
       </form>
-      <form id="mattle-menu" style="display: none">
+      <form id="battle-menu" style="display: none">
         <div id="battle-1">1.공격</div>
         <div id="battle-2">2.회복</div>
         <div id="battle-3">3.도망</div>
@@ -39,6 +39,20 @@
       </div>
     </div>
 
-    <script src="./textRPGgame.js"></script>
+    <script>
+      const $startScreen = document.querySelector("#start-screen");
+      const $gameMenu = document.querySelector("#game-menu");
+      const $battleMenu = document.querySelector("#battle-menu");
+      const $heroName = document.querySelector("#hero-name");
+
+      $startScreen.addEventListener("submit", (event) => {
+        event.preventDefault();
+        console.log("dsadsaasdasd");
+        name = event.target["name-input"].value;
+        $startScreen.style.display = "none";
+        $gameMenu.style.display = "block";
+        $heroName.textContent = name;
+      });
+    </script>
   </body>
 </html>
