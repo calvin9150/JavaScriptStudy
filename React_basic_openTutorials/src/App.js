@@ -28,7 +28,7 @@ class App extends Component {
     if (this.state.mode === "welcome") {
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
-    } else if (this.state.mode === " read") {
+    } else if (this.state.mode === "read") {
       _title = this.state.contents[0].title;
       _desc = this.state.contents[0].desc;
     }
@@ -47,7 +47,11 @@ class App extends Component {
               onClick={function (e) {
                 console.log(e);
                 e.preventDefault();
-              }}
+                this.state.mode = "welcome"; //이벤트 함수에서 this는 컴퍼넌트를 가르키지 않는다.
+                this.setState({
+                  mode: "welcome",
+                });
+              }.bind(this)}
             >
               {this.state.subject.title}
             </a>
