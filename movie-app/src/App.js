@@ -1,56 +1,44 @@
 import React from "react";
-import PropTypes from "prop-types";
+import axios from "axios";
+import Movie from "./Movie";
 
-function Food({ name, picture, rating }) {
-  return (
-    <div>
-      <h2>i like {name}</h2>
-      <h4>{rating}/5.0</h4>
-      <img src={picture} alt={name} />
-    </div>
-  );
-}
-
-Food.propTypes = {
-  name: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
-  rating: PropTypes.number,
-};
-
-const foodLike = [
-  {
-    id: 1,
-    name: "kimchi",
-    image: "https://img.hankyung.com/photo/201910/01.20660060.1.jpg",
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: "galbi",
-    image:
-      "https://homecuisine.co.kr/files/attach/images/140/519/096/3f4c87159f02e10a302861d0e847d86a.JPG",
-    rating: 4.6,
-  },
-];
-
-// function renderFood(dish) {
-//   return <Food name={dish.name} picture={dish.image} />;
-// }
-
-function App() {
-  return (
-    <div>
-      <h1>Hi</h1>
-      {foodLike.map((dish) => (
-        <Food
-          key={dish.id}
-          name={dish.name}
-          picture={dish.image}
-          rating={dish.rating}
-        />
-      ))}
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    isLoading: true,
+    movies: [],
+  };
+  getMovies = async () => {
+    const {
+      data: {
+        data: { movies },
+      },
+    } = await axios.get(
+      "https://yts-proxy.now.sh/list_movies.json?sort_by=rating"
+    );
+    this.setState({ movies, isLoading: false });
+  };
+  componentDidMount() {
+    this.getMovies();
+  }
+  render() {
+    const { isLoading, movies } = this.state;
+    return (
+      <div>
+        {isLoading
+          ? "Loading..."
+          : movies.map((movie) => (
+              <Movie
+                key={movie.id}
+                id={movie.id}
+                year={movie.year}
+                title={movie.title}
+                summary={movie.summary}
+                poster={movie.medium_cover_image}
+              />
+            ))}
+      </div>
+    );
+  }
 }
 
 export default App;
