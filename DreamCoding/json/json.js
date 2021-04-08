@@ -1,4 +1,5 @@
 //JSON : JavaScript Object Notation
+// 서버에서 클라이언트로 데이터를 보낼 때 사용하는 양식.
 
 // 1. Object to JSON
 // stringfy(obj)
