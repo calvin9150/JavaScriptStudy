@@ -1,0 +1,23 @@
+body {
+  background-color: gray;
+}
+
+.mouse {
+  position: absolute;
+}
+
+.imgs {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.line1 {
+  position: absolute;
+  width: 100%;
+}
+
+.line2 {
+  position: absolute;
+  width: 1px;
+  min-height: 100%;
+}
