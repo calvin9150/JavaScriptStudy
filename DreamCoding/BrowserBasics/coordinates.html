@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>coordinates</title>
+    <style>
+      .boxes {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .box {
+        background-color: blue;
+        width: 300px;
+        height: 300px;
+        border: 2px ridge red;
+      }
+
+      .special {
+        background-color: green;
+      }
+
+      .btns {
+        position: fixed;
+        right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="btns">
+      <button class="by">Scroll by 100px</button>
+      <button class="to">Scroll to 100px</button>
+      <button class="into">Scroll into SpecialBox</button>
+    </div>
+    <section class="boxes">
+      <div class="box">1</div>
+      <div class="box special">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+      <div class="box">6</div>
+      <div class="box">7</div>
+      <div class="box">8</div>
+      <div class="box">9</div>
+      <div class="box">10</div>
+    </section>
+
+    <script>
+      const special = document.querySelector(".special");
+      const byBtn = document.querySelector(".by");
+      const toBtn = document.querySelector(".to");
+      const intoBtn = document.querySelector(".into");
+
+      function turnBlue() {
+        special.style.backgroundColor = "skyblue";
+      }
+
+      function getCoordinates() {
+        let pagex = event.pageX;
+        console.log(
+          `client X : ${special.clientWidth} client Y : ${special.clientHeight} page X : ${pagex}`
+        );
+      }
+
+      function scrollTo(x, y) {
+        window.scroll(x, y);
+      }
+
+      special.addEventListener("click", (e) => {
+        turnBlue();
+        getCoordinates();
+      });
+
+      toBtn.addEventListener("click", () => scrollTo(0, 100));
+
+      byBtn.addEventListener("click", () => {
+        scrollTo(0, window.scrollY + 100);
+      });
+
+      intoBtn.addEventListener("click", () =>
+        scrollTo(0, special.clientHeight)
+      );
+    </script>
+  </body>
+</html>

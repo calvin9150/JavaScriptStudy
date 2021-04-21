@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>window size</title>
+    <div class="screen">window screen</div>
+    <div class="outer">window outer</div>
+    <div class="inner">window inner</div>
+  </head>
+  <body>
+    <script>
+      const screen2 = document.querySelector(".screen");
+      const screenOuter = document.querySelector(".outer");
+      const screenInner = document.querySelector(".inner");
+      const size = window.screen;
+
+      function updateTag() {
+        screen2.innerHTML = `윈도우 스크린 : ${window.screen.width} . ${size.height} `;
+        screenOuter.innerHTML = `윈도우 outer : ${window.outerWidth} . ${window.outerHeight} `;
+        screenInner.innerHTML = `윈도우 inner : ${window.innerWidth} . ${window.innerHeight} `;
+      }
+      window.addEventListener("resize", () => updateTag());
+    </script>
+  </body>
+</html>
