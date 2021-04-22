@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./main.js" defer></script>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -15,21 +15,19 @@
     <title>Shopping List</title>
   </head>
   <body>
-    <section class="app">
-      <!-- body -->
-      <div class="body">Shopping List</div>
-      <form class="inputForm">
-        <input type="text" placeholder="할 일은???" />
-      </form>
-      <!-- List -->
-      <div class="list">
-        <ol class="toDoList">
-          <li>
-            <span>일어나기</span>
-            <button class="delete"><i class="fas fa-times-circle"></i></button>
-          </li>
-        </ol>
-      </div>
+    <section class="list">
+      <header class="header">Shopping List</header>
+      <ul class="items">
+        <li class="item__row">
+          <div class="item__divider"></div>
+        </li>
+      </ul>
+      <footer class="footer">
+        <input type="text" class="footer__input" />
+        <button class="footer__button">
+          <i class="fas fa-plus"></i>
+        </button>
+      </footer>
     </section>
   </body>
 </html>

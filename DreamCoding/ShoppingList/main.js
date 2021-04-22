@@ -1,27 +1,62 @@
-const inputForm = document.querySelector(".inputForm");
-const inputValue = inputForm.querySelector("input");
-const toDoList = document.querySelector(".toDoList");
-const deleteBtn = document.querySelector(".delete");
-let post;
-let del;
+const items = document.querySelector(".items");
+const input = document.querySelector(".footer__input");
+const addBtn = document.querySelector(".footer__button");
 
-function handleSubmit(e) {
-  e.preventDefault();
-  const li = document.createElement("li");
-  const delBtn = document.createElement("button");
-  let span = document.createElement("span");
-  delBtn.className = "delete";
-  span.innerText = inputValue.value;
-  delBtn.innerHTML = '<i class="fas fa-times-circle"></i>';
-  li.append(span);
-  li.append(delBtn);
-  toDoList.appendChild(li);
+function onAdd() {
+  // 입력한 테스트 받기
+  const text = input.value;
+  if (text === "") {
+    input.focus();
+    return;
+  }
+  // 새 아이템 생성(텍스트+삭제버튼)
+  const item = createItem(text);
+  //   items 컨테이너 안에 새로 만든 아이템 추가
+  items.appendChild(item);
+  // 새로 추가된 아이템으로 스크롤링
+  item.scrollIntoView({ block: "center" });
+  // 인풋 초기화
+  input.value = "";
+  input.focus();
 }
 
-function deleteList() {
-  del = document.querySelector("li");
-  del.remove();
+function createItem(text) {
+  const itemRow = document.createElement("li");
+  itemRow.setAttribute("class", "item__row");
+
+  const item = document.createElement("div");
+  item.setAttribute("class", "item");
+
+  const span = document.createElement("span");
+  span.setAttribute("class", "item__name");
+  span.innerText = text;
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.setAttribute("class", "item__delete");
+  deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
+  deleteBtn.addEventListener("click", () => {
+    items.removeChild(itemRow);
+  });
+
+  const itemDivider = document.createElement("div");
+  itemDivider.setAttribute("class", "item__divider");
+
+  item.appendChild(span);
+  item.appendChild(deleteBtn);
+
+  itemRow.appendChild(item);
+  itemRow.appendChild(itemDivider);
+  return itemRow;
 }
 
-inputForm.addEventListener("submit", handleSubmit);
-deleteBtn.addEventListener("click", deleteList);
+addBtn.addEventListener("click", () => {
+  onAdd();
+});
+
+input.addEventListener("keypress", (event) => {
+  if (event.key === "Enter") {
+    onAdd();
+  }
+});
+
+input.focus();
