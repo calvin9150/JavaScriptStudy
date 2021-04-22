@@ -1,0 +1,25 @@
+body {
+  background-color: rgb(149, 220, 248);
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  background-image: url("imgs/body.png");
+  width: 280px;
+  height: 550px;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+
+ol {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  cursor: grab;
+}
