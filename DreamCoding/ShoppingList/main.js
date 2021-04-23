@@ -1,8 +1,9 @@
 const items = document.querySelector(".items");
 const input = document.querySelector(".footer__input");
 const addBtn = document.querySelector(".footer__button");
+const inputForm = document.querySelector(".inputForm");
 
-function onAdd() {
+function onAdd(event) {
   // 입력한 테스트 받기
   const text = input.value;
   if (text === "") {
@@ -49,13 +50,10 @@ function createItem(text) {
   return itemRow;
 }
 
-addBtn.addEventListener("click", () => {
-  onAdd();
-});
-
-input.addEventListener("keypress", (event) => {
-  if (event.key === "Enter") {
-    onAdd();
+inputForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (event) {
+    onAdd(event);
   }
 });
 
