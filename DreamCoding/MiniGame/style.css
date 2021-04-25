@@ -43,6 +43,7 @@ button {
   border: 5px solid black;
   font-size: 32px;
   margin-top: 8px;
+  visibility: hidden;
 }
 
 .game__score {
@@ -55,6 +56,7 @@ button {
   border: 3px solid black;
   text-align: center;
   color: white;
+  visibility: hidden;
 }
 
 .game__header {
