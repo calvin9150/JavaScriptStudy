@@ -32,6 +32,10 @@ button {
   transition: transform 100ms ease-in;
 }
 
+.carrot {
+  background-color: rgba(255, 127, 80, 0);
+}
+
 .game__timer {
   width: 100px;
   background-color: white;
@@ -64,6 +68,7 @@ button {
   width: 100%;
   height: 100%;
   margin-top: 40px;
+  position: relative;
 }
 
 .pop-up {
