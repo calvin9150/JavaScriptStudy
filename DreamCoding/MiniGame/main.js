@@ -8,7 +8,7 @@ const popUp = document.querySelector(".pop-up");
 const popUpText = document.querySelector(".pop-up__message");
 const popUpRefresh = document.querySelector(".pop-up__refresh");
 
-const carrotSize = 80;
+const carrotSize = 100;
 const carrotCount = 5;
 const bugCount = 5;
 const gameDurationSec = 5;
@@ -16,8 +16,10 @@ const gameDurationSec = 5;
 let started = false;
 let score = 0;
 let timer;
+field.addEventListener("click", onFieldClick);
 
 function startGame() {
+  started = true;
   initGame();
   showStopButton();
   showTimerAndScore();
@@ -25,9 +27,16 @@ function startGame() {
 }
 
 function stopGame() {
+  started = false;
   stopGameTimer();
   hideGameButton();
   showPopUpWithText("REPLAY?");
+}
+
+function finishGame(win) {
+  started = false;
+  hideGameButton();
+  showPopUpWithText(win ? "YOU WON" : "YOU LOST");
 }
 
 function startGameTimer() {
@@ -36,6 +45,7 @@ function startGameTimer() {
   timer = setInterval(() => {
     if (remainingTimeSec <= 0) {
       clearInterval;
+      finishGame(carrotCount === score);
       return;
     }
     updateTimerText(--remainingTimeSec);
@@ -61,8 +71,13 @@ gameBtn.addEventListener("click", () => {
   started = !started;
 });
 
+popUpRefresh.addEventListener("click", () => {
+  hidePopUp();
+  startGame();
+});
+
 function showStopButton() {
-  const icon = gameBtn.querySelector(".fa-play");
+  const icon = gameBtn.querySelector(".fas");
   icon.classList.add("fa-stop");
   icon.classList.add("fa-play");
 }
@@ -81,11 +96,34 @@ function showPopUpWithText(text) {
   popUp.classList.remove("pop-up--hide");
 }
 
+function hidePopUp() {
+  popUp.classList.add("pop-up--hide");
+}
+
 function initGame() {
   field.innerHTML = "";
   gameScore.innerText = carrotCount;
   addItem("carrot", carrotCount, "img/carrot.png");
   addItem("bug", bugCount, "img/bug.png");
+}
+
+function onFieldClick(event) {
+  const target = event.target;
+  if (target.matches(".carrot")) {
+    target.remove();
+    score++;
+    updateScoreBoard();
+    if (carrotCount === score) {
+      finishGame(true);
+    }
+  } else if (target.matches(".bug")) {
+    stopGameTimer();
+    finishGame(false);
+  }
+}
+
+function updateScoreBoard() {
+  gameScore.innerText = carrotCount - score;
 }
 
 function addItem(className, count, imgPath) {
