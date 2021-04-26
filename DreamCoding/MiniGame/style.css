@@ -1,98 +1,83 @@
-.game {
-  background: url("img/background.png") center/cover;
-  width: 800px;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  margin: auto;
-  border-radius: 20px;
-}
-
 body {
   text-align: center;
-  background-color: rgb(54, 18, 18);
+  background-color: black;
 }
 
 button {
-  border: none;
   outline: none;
   cursor: pointer;
+  border: none;
+  background: white;
+  border-radius: 20%;
+  padding: 0;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 800px;
+  height: 550px;
+  margin: auto;
+  margin-top: 50px;
+  background: url(img/background.png) center/cover no-repeat;
+}
+
+header {
+  text-align: center;
+  padding: 8px;
+}
+
+.game__button {
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  background-color: wheat;
+  border: 4px solid black;
+  transition: transfrom 300ms ease-in;
 }
 
 .game__button:hover {
   transform: scale(1.1);
 }
 
-.game__button {
-  width: 60px;
-  height: 60px;
-  background-color: wheat;
-  border: 4px solid black;
-  font-size: 24px;
-  transition: transform 100ms ease-in;
-}
-
-.carrot {
-  background-color: rgba(255, 127, 80, 0);
-}
-
 .game__timer {
+  display: block;
   width: 100px;
-  background-color: white;
-  text-align: center;
-  border: 5px solid black;
-  font-size: 32px;
+  margin: auto;
   margin-top: 8px;
-  visibility: hidden;
-  user-select: none;
-  cursor: auto;
+  padding: 0 20px;
+  background-color: white;
+  border-radius: 10px;
+  font-size: 32px;
+  border: 5px solid black;
 }
 
 .game__score {
+  display: inline-block;
   width: 50px;
   height: 50px;
-  margin-top: 8px;
   font-size: 38px;
+  margin-top: 4px;
   background-color: darksalmon;
+  color: white;
   border-radius: 50%;
   border: 3px solid black;
-  text-align: center;
-  color: white;
-  visibility: hidden;
-  user-select: none;
-  cursor: auto;
-}
-
-.game__header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
 }
 
 .game__field {
   width: 100%;
   height: 100%;
-  margin-top: 40px;
-  position: relative;
 }
 
 .pop-up {
-  display: block;
-  width: 400px;
-  height: 140px;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.548);
-  color: white;
-  text-align: center;
-  margin: auto;
-  transform: translateY(-150%);
   border-radius: 20px;
-}
-
-.pop-up--hide {
-  display: none;
+  width: 400px;
+  height: 124px;
+  margin: auto;
+  background-color: #00000090;
+  color: white;
+  transform: translateY(-150%);
 }
 
 .pop-up__refresh {
@@ -101,7 +86,11 @@ button {
   font-size: 24px;
   background-color: wheat;
   border: 2px solid black;
-  border-radius: 50%;
+  transition: transfrom 300ms ease-in;
+}
+
+.pop-up__refresh:hover {
+  transform: scale(1.1);
 }
 
 .pop-up__message {
@@ -109,9 +98,8 @@ button {
   font-size: 38px;
 }
 
-.carrot,
-.bug {
-  transition: transform 50ms ease-in;
+.hide {
+  display: none;
 }
 
 .carrot:hover,
