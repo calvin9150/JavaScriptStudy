@@ -28,9 +28,9 @@ function createItem(text) {
   const item = document.createElement("div");
   item.setAttribute("class", "item");
 
-  const span = document.createElement("span");
-  span.setAttribute("class", "item__name");
-  span.innerText = text;
+  const name = document.createElement("span");
+  name.setAttribute("class", "item__name");
+  name.innerText = text;
 
   const deleteBtn = document.createElement("button");
   deleteBtn.setAttribute("class", "item__delete");
@@ -42,7 +42,7 @@ function createItem(text) {
   const itemDivider = document.createElement("div");
   itemDivider.setAttribute("class", "item__divider");
 
-  item.appendChild(span);
+  item.appendChild(name);
   item.appendChild(deleteBtn);
 
   itemRow.appendChild(item);
